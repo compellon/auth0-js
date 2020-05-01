@@ -130,16 +130,7 @@ Authentication.prototype.buildAuthorizeUrl = function(options) {
     message: 'options parameter is not valid'
   });
 
-  params = objectHelper
-    .merge(this.baseOptions, [
-      'clientID',
-      'responseType',
-      'responseMode',
-      'redirectUri',
-      'scope',
-      'audience'
-    ])
-    .with(options);
+  params = objectHelper.merge(this.baseOptions).with(options);
 
   /* eslint-disable */
   assert.check(
@@ -229,8 +220,11 @@ Authentication.prototype.buildLogoutUrl = function(options) {
     message: 'options parameter is not valid'
   });
 
+  console.log(
+    'DEBUG: auth0:buildLogoutUrl() option: ' + JSON.stringify(options)
+  );
   params = objectHelper
-    .merge(this.baseOptions, ['clientID'])
+    .merge(this.baseOptions, ['clientID', 'client_id'])
     .with(options || {});
 
   // eslint-disable-next-line
@@ -238,7 +232,13 @@ Authentication.prototype.buildLogoutUrl = function(options) {
     params.auth0Client = this.request.getTelemetryData();
   }
 
+  console.log(
+    'DEBUG: auth0:buildLogoutUrl() params (before): ' + JSON.stringify(params)
+  );
   params = objectHelper.toSnakeCase(params, ['auth0Client', 'returnTo']);
+  console.log(
+    'DEBUG: auth0:buildLogoutUrl() params (after): ' + JSON.stringify(params)
+  );
 
   qString = qs.stringify(objectHelper.blacklist(params, ['federated']));
   if (
@@ -369,7 +369,7 @@ Authentication.prototype.oauthToken = function(options, cb) {
   url = urljoin(this.baseOptions.rootUrl, 'oauth', 'token');
 
   body = objectHelper
-    .merge(this.baseOptions, ['clientID', 'scope', 'audience'])
+    .merge(this.baseOptions, ['clientID', 'client_id', 'scope', 'audience'])
     .with(options);
 
   assert.check(
@@ -439,7 +439,7 @@ Authentication.prototype.loginWithResourceOwner = function(options, cb) {
   url = urljoin(this.baseOptions.rootUrl, 'oauth', 'ro');
 
   body = objectHelper
-    .merge(this.baseOptions, ['clientID', 'scope'])
+    .merge(this.baseOptions, ['clientID', 'client_id', 'scope'])
     .with(options, ['username', 'password', 'scope', 'connection', 'device']);
 
   body = objectHelper.toSnakeCase(body, ['auth0Client']);
@@ -605,7 +605,9 @@ Authentication.prototype.delegation = function(options, cb) {
 
   url = urljoin(this.baseOptions.rootUrl, 'delegation');
 
-  body = objectHelper.merge(this.baseOptions, ['clientID']).with(options);
+  body = objectHelper
+    .merge(this.baseOptions, ['clientID', 'client_id'])
+    .with(options);
 
   body = objectHelper.toSnakeCase(body, ['auth0Client']);
 

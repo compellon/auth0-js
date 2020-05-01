@@ -58,9 +58,9 @@ bower_release()
     grep -v -e '^dist$' -e '^dist/$' .gitignore > /tmp/.gitignore
     grep -v -e '^build$' -e '^build/$' .gitignore > /tmp/.gitignore
     mv /tmp/.gitignore .gitignore
-    git add --force dist/*
-    git add --force build/*
-    git commit -am "$TAG_NAME"
+    git add -f dist/*
+    git add -f build/*
+    git commit --no-verify -am "$TAG_NAME"
     git tag "$TAG_NAME" -m "$LAST_COMMIT"
     git push origin $TAG_NAME
     success "$NPM_NAME version ready for bower"
