@@ -483,7 +483,7 @@ WebAuth.prototype.renewAuth = function(options, cb) {
   var timeout = options.timeout;
   var _this = this;
 
-  var params = Object.assign({}, options);
+  var params = objectHelper.merge(this.baseOptions).with(options);
   // #objectHelper
   // .merge(this.baseOptions, [
   //   'clientID',
@@ -548,7 +548,7 @@ WebAuth.prototype.renewAuth = function(options, cb) {
  * @param {String} [options.timeout] value in milliseconds used to timeout when the `/authorize` call is failing as part of the silent authentication with postmessage enabled due to a configuration.
  */
 WebAuth.prototype.checkSession = function(options, cb) {
-  var params = Object.assign({}, options);
+  var params = objectHelper.merge(this.baseOptions).with(options);
   // #objectHelper
   // .merge(this.baseOptions, [
   //   'clientID',
@@ -626,7 +626,9 @@ WebAuth.prototype.changePassword = function(options, cb) {
  * @see   {@link https://auth0.com/docs/api/authentication#passwordless}
  */
 WebAuth.prototype.passwordlessStart = function(options, cb) {
-  var authParams = Object.assign({}, options.authParams);
+  var authParams = objectHelper
+    .merge(this.baseOptions)
+    .with(options.authParams);
   // .merge(this.baseOptions, [
   //   'responseType',
   //   'responseMode',
@@ -677,7 +679,7 @@ WebAuth.prototype.signup = function(options, cb) {
  * @see {@link https://auth0.com/docs/api/authentication#authorize-client}
  */
 WebAuth.prototype.authorize = function(options) {
-  var params = Object.assign({}, options);
+  var params = objectHelper.merge(this.baseOptions).with(options);
   // #objectHelper
   // .merge(this.baseOptions, [
   //   'clientID',
@@ -763,7 +765,7 @@ WebAuth.prototype.signupAndAuthorize = function(options, cb) {
  * @param {crossOriginLoginCallback} cb Callback function called only when an authentication error, like invalid username or password, occurs. For other types of errors, there will be a redirect to the `redirectUri`.
  */
 WebAuth.prototype.login = function(options, cb) {
-  var params = Object.assign({}, options);
+  var params = objectHelper.merge(this.baseOptions).with(options);
   // #objectHelper
   // .merge(this.baseOptions, [
   //   'clientID',
@@ -803,7 +805,7 @@ WebAuth.prototype.login = function(options, cb) {
  * @param {crossOriginLoginCallback} cb Callback function called only when an authentication error, like invalid username or password, occurs. For other types of errors, there will be a redirect to the `redirectUri`.
  */
 WebAuth.prototype.passwordlessLogin = function(options, cb) {
-  var params = Object.assign({}, options);
+  var params = objectHelper.merge(this.baseOptions).with(options);
   // #objectHelper
   // .merge(this.baseOptions, [
   //   'clientID',
@@ -894,7 +896,7 @@ WebAuth.prototype.logout = function(options) {
  */
 WebAuth.prototype.passwordlessVerify = function(options, cb) {
   var _this = this;
-  var params = Object.assign({}, options);
+  var params = objectHelper.merge(this.baseOptions).with(options);
   // #objectHelper
   // .merge(this.baseOptions, [
   //   'clientID',
