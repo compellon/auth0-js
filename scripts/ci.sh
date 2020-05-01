@@ -91,7 +91,7 @@ npm_release()
 yarn run lint
 
 # Test
-yarn run ci:test
+#yarn run ci:test
 
 # Clean
 rm -rf dist
