@@ -25,61 +25,66 @@ var tokenParams = [
   'code_verifier'
 ];
 
-// var authorizeParams = [
-//   // auth0
-//   'connection',
-//   'connection_scope',
-//   'auth0Client',
-//   'owp',
-//   'device',
-//   'realm',
-//
-//   'protocol',
-//   '_csrf',
-//   '_intstate',
-//   'login_ticket',
-//
-//   // oauth2
-//   'client_id',
-//   'response_type',
-//   'response_mode',
-//   'redirect_uri',
-//   'audience',
-//   'scope',
-//   'state',
-//   'nonce',
-//   'display',
-//   'prompt',
-//   'screen_hint',
-//   'max_age',
-//   'ui_locales',
-//   'claims_locales',
-//   'id_token_hint',
-//   'login_hint',
-//   'acr_values',
-//   'claims',
-//   'registration',
-//   'request',
-//   'request_uri',
-//   'code_challenge',
-//   'code_challenge_method',
-//
-//   // ADDITIONAL_PARAMETERS:
-//   // https://auth0.com/docs/api/authentication?javascript#social
-//   'access_type',
-//   'display'
-// ];
+var authorizeParams = [
+  // auth0
+  'connection',
+  'connection_scope',
+  'auth0Client',
+  'owp',
+  'device',
+  'realm',
+
+  'protocol',
+  '_csrf',
+  '_intstate',
+  'login_ticket',
+
+  // oauth2
+  'client_id',
+  'response_type',
+  'response_mode',
+  'redirect_uri',
+  'audience',
+  'scope',
+  'state',
+  'nonce',
+  'display',
+  'prompt',
+  'screen_hint',
+  'max_age',
+  'ui_locales',
+  'claims_locales',
+  'id_token_hint',
+  'login_hint',
+  'acr_values',
+  'claims',
+  'registration',
+  'request',
+  'request_uri',
+  'code_challenge',
+  'code_challenge_method',
+
+  // ADDITIONAL_PARAMETERS:
+  // https://auth0.com/docs/api/authentication?javascript#social
+  'access_type',
+  'display',
+
+  // Additional Compellon parameters
+  'environment_id',
+  'license_url',
+  'product_code'
+];
 
 function oauthAuthorizeParams(warn, params) {
-  // var notAllowed = objectHelper.getKeysNotIn(params, authorizeParams);
-  //
-  // if (notAllowed.length > 0) {
-  //   warn.warning(
-  //     'Following parameters are not allowed on the `/authorize` endpoint: [' +
-  //       notAllowed.join(',') +
-  //       ']'
-  //   );
-  // }
+  var notAllowed = objectHelper.getKeysNotIn(params, authorizeParams);
+
+  if (notAllowed.length > 0) {
+    warn.warning(
+      'Following parameters are not allowed on the `/authorize` endpoint: [' +
+        notAllowed.join(',') +
+        ']'
+    );
+  }
 
   return params;
 }
