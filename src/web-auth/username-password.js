@@ -16,7 +16,8 @@ UsernamePassword.prototype.login = function(options, cb) {
   var url;
   var body;
 
-  url = urljoin(this.baseOptions.rootUrl, 'usernamepassword', 'login');
+  // url = urljoin(this.baseOptions.rootUrl, 'usernamepassword', 'login');
+  url = urljoin(this.baseOptions.rootUrl, 'oauth', 'ro');
 
   options.username = options.username || options.email; // eslint-disable-line
 
