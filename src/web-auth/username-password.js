@@ -16,13 +16,8 @@ UsernamePassword.prototype.login = function(options, cb) {
   var url;
   var body;
 
-  console.log(
-    `DEBUG :: url = urljoin(this.baseOptions.rootUrl, 'oauth', 'ro'); this.baseOptions.rootUrl:` +
-      this.baseOptions.rootUrl
-  );
   // url = urljoin(this.baseOptions.rootUrl, 'usernamepassword', 'login');
   url = urljoin(this.baseOptions.rootUrl, 'oauth', 'ro');
-  console.log(`DEBUG :: url:` + url);
 
   options.username = options.username || options.email; // eslint-disable-line
 
@@ -43,7 +38,6 @@ UsernamePassword.prototype.login = function(options, cb) {
 
   body = objectHelper.toSnakeCase(body, ['auth0Client']);
 
-  console.log(`DEBUG :: return this.request.post(url)... url:` + url);
   return this.request
     .post(url)
     .send(body)
