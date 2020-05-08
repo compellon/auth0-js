@@ -4,7 +4,6 @@
   "description": "Auth0 headless browser sdk",
   "author": "Auth0",
   "license": "MIT",
-  "main": "dist/compellon-auth0-js.js",
   "files": [
     "src",
     "plugins",
