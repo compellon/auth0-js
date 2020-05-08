@@ -1,3 +1,7 @@
+## [v9.13.7](https://github.com/auth0/auth0.js/tree/v9.13.7) (2020-05-08)
+
+[Full Changelog](https://github.com/auth0/auth0.js/compare/v9.13.6...v9.13.7)
+
 ## [v9.13.6](https://github.com/auth0/auth0.js/tree/v9.13.6) (2020-05-07)
 
 [Full Changelog](https://github.com/auth0/auth0.js/compare/v9.13.3-compellon3...v9.13.6)
