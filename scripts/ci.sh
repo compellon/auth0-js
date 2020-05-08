@@ -104,8 +104,8 @@ yarn run build
 git checkout -b dist
 bower_release
 new_line
-npm_release "$VERSION"
+#npm_release "$VERSION"
 new_line
-cdn_release "$VERSION"
+#cdn_release "$VERSION"
 git checkout master
 git branch -D dist
