@@ -4,6 +4,8 @@
   "description": "Auth0 headless browser sdk",
   "author": "Auth0",
   "license": "MIT",
+  "module": "dist/auth0.min.esm.js",
+  "main": "dist/auth0.min.js",
   "files": [
     "src",
     "plugins",
